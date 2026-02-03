@@ -2,9 +2,7 @@ library(tidyverse, quietly = TRUE)
 
 
 med_ <- read_csv('who_rn_mid_data.csv', show_col_types = FALSE) # reading in data
-#nurse <- read_csv('who_rn_mid_data.csv', show_col_types = FALSE) # decided to create a function since this is repetitive
-#lab <- read_csv('who_medlab_data.csv', show_col_types = FALSE)
-#comm <- read_csv('who_chw_data.csv', show_col_types = FALSE)
+med_ |> distinct(Location, Period, Indicator, .keep_all = TRUE) # checking for duplicates
 
 med <- med_ |> discard(~ all(is.na(.x))) # dropping columns that have all null values
 
